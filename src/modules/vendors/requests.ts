@@ -25,7 +25,7 @@ interface VendorsListResponse {
 
 function getVendorsList({
   page,
-  pageSize = 10,
+  pageSize = 20,
   lat = 35.754,
   long = 51.328,
 }: VendorsListParams) {
@@ -36,6 +36,7 @@ function getVendorsList({
       lat,
       long,
     },
+    responseType: 'json',
   });
 }
 

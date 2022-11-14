@@ -1,6 +1,13 @@
+.scrollable_area {
+  overflow-y: auto;
+  height: 100vh;
+  direction: ltr;
+}
+
 .list {
   padding: 8px 0;
   margin: 0;
+  direction: rtl;
 }
 
 .list__item {

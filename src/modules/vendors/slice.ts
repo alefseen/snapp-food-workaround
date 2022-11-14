@@ -22,7 +22,7 @@ const vendorsSlice = createSlice({
   name: 'vendors',
   initialState: initialState,
   reducers: {
-    getVendors(state) {
+    getVendors(state, action: PayloadAction<number>) {
       return state;
     },
     addVendors(
