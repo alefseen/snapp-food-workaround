@@ -1,35 +1,24 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { useSelector } from 'store';
+
 import VendorCard from './components/vendorCard';
 import styles from './index.module.scss';
-import { Vendor } from './models';
-import { getVendorsList } from './requests';
+import { getVendors } from './slice';
 
 function Vendors() {
-  const [state, setState] = useState<Vendor[]>([]);
+  const { vendors, count } = useSelector(state => state.vendors);
+
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    getVendorsList({ page: 0 }).then(res => {
-      console.log(res.data);
-
-      const newVendors = res.data.finalResult
-        .filter(
-          (
-            item
-          ): item is {
-            type: 'VENDOR';
-            data: Vendor;
-          } => item.type === 'VENDOR'
-        )
-        .map(item => item.data);
-
-      setState(newVendors);
-    });
+    dispatch(getVendors());
   }, []);
 
   return (
     <main>
       <ul className={styles.list}>
-        {state.map(vendor => (
+        {vendors.map(vendor => (
           <li key={vendor.id} className={styles.list__item}>
             <VendorCard vendor={vendor} />
           </li>

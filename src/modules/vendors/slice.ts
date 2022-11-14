@@ -22,6 +22,9 @@ const vendorsSlice = createSlice({
   name: 'vendors',
   initialState: initialState,
   reducers: {
+    getVendors(state) {
+      return state;
+    },
     addVendors(
       state,
       { payload: { count, vendors } }: PayloadAction<UpdateVendorsPayload>
@@ -44,8 +47,9 @@ const vendorsSlice = createSlice({
   },
 });
 
-const { addVendors, updateStatus, resetVendors } = vendorsSlice.actions;
+const { getVendors, addVendors, updateStatus, resetVendors } =
+  vendorsSlice.actions;
 
-export { vendorsSlice, addVendors, updateStatus, resetVendors };
+export { vendorsSlice, addVendors, updateStatus, resetVendors, getVendors };
 
 export default vendorsSlice.reducer;
