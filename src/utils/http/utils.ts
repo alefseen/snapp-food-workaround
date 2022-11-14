@@ -9,4 +9,10 @@ function camelizeKeys(response: AxiosResponse) {
   return response;
 }
 
-export { camelizeKeys };
+function normalizeResponse(response: AxiosResponse) {
+  response.data = response.data?.data || {};
+
+  return response;
+}
+
+export { camelizeKeys, normalizeResponse };

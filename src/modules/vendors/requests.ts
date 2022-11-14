@@ -9,7 +9,7 @@ interface VendorsListParams {
 }
 
 interface VendorListCommonItem {
-  type: 'TEXT';
+  type: 'VENDOR';
   data: Vendor;
 }
 

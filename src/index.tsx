@@ -5,6 +5,8 @@ import { Provider } from 'react-redux';
 import store from './store';
 import router from './router';
 
+import 'styles/global.scss';
+
 const container = document.getElementById('app');
 const root = createRoot(container!);
 

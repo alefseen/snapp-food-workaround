@@ -2,7 +2,6 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { RequestStatus } from 'src/utils/types';
 
 import { Vendor } from './models';
-
 interface vendorsState {
   count?: number;
   vendors: Vendor[];
