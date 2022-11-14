@@ -9,6 +9,8 @@ interface Vendor {
   address: string;
   isOpen: boolean;
   minOrder: number;
+  deliveryFee: number;
+  deliver: boolean;
 }
 
 export type { Vendor };

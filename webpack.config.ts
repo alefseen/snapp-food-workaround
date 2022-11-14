@@ -2,6 +2,7 @@ import path from 'path';
 import type { Configuration } from 'webpack';
 import type { Configuration as DevServerConfiguration } from 'webpack-dev-server';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
+import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 
 const config: Configuration = {
   mode: 'development',
@@ -22,21 +23,26 @@ const config: Configuration = {
   } as DevServerConfiguration,
   module: {
     rules: [
-      { test: /\.s?css$/, use: ['style-loader', 'css-loader', 'sass-loader'] },
+      {
+        test: /\.(woff2?|ttf|otf|eot|svg)$/,
+        exclude: /node_modules/,
+        type: 'asset/resource',
+      },
+      {
+        test: /\.s?css$/,
+        use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader'],
+      },
       { test: /\.tsx?$/, loader: 'babel-loader' },
       {
         test: /\.tsx?$/,
         loader: 'ts-loader',
         exclude: /node_modules|\.d\.ts$/,
       },
-      {
-        test: /\.(woff2?|ttf|otf|eot|svg)$/,
-        exclude: /node_modules/,
-        loader: 'file-loader',
-      },
     ],
   },
   plugins: [
+    new MiniCssExtractPlugin(),
+
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, './public/index.html'),
     }),
